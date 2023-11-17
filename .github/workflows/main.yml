@@ -33,9 +33,9 @@ jobs:
       with:
         node-version: 14
 
-    - name: Install Vue CLI
-      run: |
-        npm install -g @vue/cli
+    # - name: Install Vue CLI
+    #   run: |
+    #     npm install -g @vue/cli
 
     - name: Install NPM dependencies
       run: |
@@ -52,6 +52,7 @@ jobs:
     - name: Set application key
       run: |
         php artisan key:generate
+      working-directory: /var/www/html
 
     - name: Run tests
       run: |
