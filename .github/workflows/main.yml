@@ -55,7 +55,7 @@ jobs:
     - name: Set application key
       run: |
         php artisan key:generate
-      working-directory: /usr/bin/bash/laravel-app
+      working-directory: /home/runner/work/testAction/testAction
 
     - name: Run tests
       run: |
