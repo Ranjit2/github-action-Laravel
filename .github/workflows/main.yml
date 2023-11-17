@@ -23,10 +23,10 @@ jobs:
       run: |
         composer install --no-interaction --prefer-dist
 
-    - name: Set up MySQL
-      run: |
-        sudo service mysql start
-        mysql -e 'CREATE DATABASE IF NOT EXISTS your_database_name'
+    # - name: Set up MySQL
+    #   run: |
+    #     sudo service mysql start
+    #     mysql -e 'CREATE DATABASE IF NOT EXISTS your_database_name'
 
     - name: Install Node.js
       uses: actions/setup-node@v3
@@ -45,10 +45,10 @@ jobs:
       run: |
         npm run prod
 
-    - name: Run Laravel Migrations and Seed
-      run: |
-        php artisan migrate --force
-        php artisan db:seed --force
+    # - name: Run Laravel Migrations and Seed
+    #   run: |
+    #     php artisan migrate --force
+    #     php artisan db:seed --force
 
     - name: Run tests
       run: |
