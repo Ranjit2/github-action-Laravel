@@ -51,11 +51,14 @@ jobs:
     #     php artisan db:seed --force
     - name: Print working directory
       run: pwd
+    - name: List files in the current directory
+      run: ls -l
+
 
     - name: Set application key
       run: |
         php artisan key:generate
-      working-directory: /home/runner/work/testAction/testAction/laravel-app
+      working-directory: /home/runner/work/testAction
 
     - name: Run tests
       run: |
