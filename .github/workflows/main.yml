@@ -1,0 +1,57 @@
+name: Laravel and Vue.js CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 7.4
+        extensions: mbstring, xml, curl, pdo, zip, openssl, bcmath, json, tokenizer, ctype, dom, fileinfo, xmlwriter, pdo_mysql
+
+    - name: Install Composer dependencies
+      run: |
+        composer install --no-interaction --prefer-dist
+
+    - name: Set up MySQL
+      run: |
+        sudo service mysql start
+        mysql -e 'CREATE DATABASE IF NOT EXISTS your_database_name'
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Install Vue CLI
+      run: |
+        npm install -g @vue/cli
+
+    - name: Install NPM dependencies
+      run: |
+        npm install
+
+    - name: Build assets
+      run: |
+        npm run prod
+
+    - name: Run Laravel Migrations and Seed
+      run: |
+        php artisan migrate --force
+        php artisan db:seed --force
+
+    - name: Run tests
+      run: |
+        ./vendor/bin/phpunit
+
+  
