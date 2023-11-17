@@ -26,10 +26,10 @@ jobs:
     - name: Set application key
       run: php artisan key:generate
 
-    - name: Set up MySQL
-      run: |
-        sudo service mysql start
-        mysql -e 'CREATE DATABASE IF NOT EXISTS your_database_name'
+    # - name: Set up MySQL
+    #   run: |
+    #     sudo service mysql start
+    #     mysql -e 'CREATE DATABASE IF NOT EXISTS your_database_name'
 
     - name: Install Node.js
       uses: actions/setup-node@v3
@@ -55,7 +55,7 @@ jobs:
 
     - name: Print working directory
       run: pwd
-      
+
     - name: List files in the current directory
       run: ls -l
 
