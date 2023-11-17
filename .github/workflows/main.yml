@@ -16,12 +16,12 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 7.4
+        php-version: 8.1
         extensions: mbstring, xml, curl, pdo, zip, openssl, bcmath, json, tokenizer, ctype, dom, fileinfo, xmlwriter, pdo_mysql
 
     - name: Install Composer dependencies
       run: |
-        composer update --no-interaction --prefer-dist
+        composer install --no-interaction --prefer-dist
 
     - name: Set up MySQL
       run: |
