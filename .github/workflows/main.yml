@@ -43,7 +43,7 @@ jobs:
 
     - name: Build assets
       run: |
-        vite build
+        npm run production
 
     # - name: Run Laravel Migrations and Seed
     #   run: |
