@@ -52,7 +52,7 @@ jobs:
     - name: Set application key
       run: |
         php artisan key:generate
-      working-directory: /laravel-app
+      working-directory: /usr/bin/bash/laravel-app
 
     - name: Run tests
       run: |
